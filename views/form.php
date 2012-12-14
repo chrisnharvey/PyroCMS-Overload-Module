@@ -10,12 +10,13 @@
 
 	<ul class="tab-menu">
 		<li><a href="#general-tab"><span>General</span></a></li>
+		<li><a href="#options-tab"><span>Options</span></a></li>
 		<li><a href="#css-tab"><span>CSS</span></a></li>
 		<li><a href="#js-tab"><span>Javascript</span></a></li>
 		<li><a href="#data-tab"><span>Data</span></a></li>
 	</ul>
 	
-	<!-- Content tab -->
+	<!-- General tab -->
 	<div class="form_inputs" id="general-tab">
 		<fieldset>
 			<ul>
@@ -42,6 +43,38 @@
 				<li>
 					<label for="slug">Method</label>
 					<div class="input"><?php echo form_input('method', isset($method) ? $method : NULL, 'maxlength="100" class="width-20"'); ?></div>
+				</li>
+			</ul>
+		</fieldset>
+	</div>
+
+	<!-- Options tab -->
+	<div class="form_inputs" id="options-tab">
+		<fieldset>
+			<ul>
+				<li>
+					<label for="title">Enable Parser <span>*</span></label>
+					<div class="input"><?php echo form_dropdown('enable_parser', array('' => 'Default', '1' => 'Yes', '0' => 'No'), isset($enable_parser) ? $enable_parser : NULL) ?></div>
+				</li>
+				
+				<li>
+					<label for="slug">Enable Parser Body</label>
+					<div class="input"><?php echo form_dropdown('enable_parser_body', array('' => 'Default', '1' => 'Yes', '0' => 'No'), isset($enable_parser_body) ? $enable_parser_body : NULL) ?></div>
+				</li>
+				
+				<li>
+					<label for="status">Enable Minify<small>Setting this to "Yes" will minify your HTML</small></label>
+					<div class="input"><?php echo form_dropdown('enable_minify', array('' => 'Default', '1' => 'Yes', '0' => 'No'), isset($enable_minify) ? $enable_minify : NULL) ?></div>
+				</li>
+				
+				<li>
+					<label for="slug">Theme</label>
+					<div class="input"><?php echo form_input('theme', isset($theme) ? $theme : NULL, 'maxlength="50" class="width-20"'); ?></div>
+				</li>
+
+				<li>
+					<label for="slug">Layout</label>
+					<div class="input"><?php echo form_input('layout', isset($layout) ? $layout : NULL, 'maxlength="50" class="width-20"'); ?></div>
 				</li>
 			</ul>
 		</fieldset>

@@ -52,6 +52,21 @@ class Events_Overload
 
 			if ($overload->css)
 				$this->ci->template->append_metadata('<style type="text/css">' . $overload->css . '</style>');
+
+			if ($overload->enable_parser)
+				$this->ci->template->enable_parser(TRUE);
+
+			if ($overload->enable_parser_body)
+				$this->ci->template->enable_parser_body(TRUE);
+
+			if ($overload->enable_minify)
+				$this->ci->template->enable_minify(TRUE);
+
+			if ($overload->theme)
+				$this->ci->template->set_theme($overload->theme);
+
+			if ($overload->layout)
+				$this->ci->template->set_layout($overload->layout);
 		}
 	}
 }

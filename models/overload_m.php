@@ -51,9 +51,15 @@ class Overload_m extends MY_Model
 			'class'  => $this->input->post('class'),
 			'method' => $this->input->post('method'),
 
-			'css'  => html_entity_decode($this->input->post('css', FALSE)),
-			'js'   => html_entity_decode($this->input->post('js', FALSE)),
-			'data' => serialize($data)
+			'enable_parser'      => $this->input->post('enable_parser'),
+			'enable_parser_body' => $this->input->post('enable_parser_body'),
+			'enable_minify'      => $this->input->post('enable_minify'),
+
+			'theme'  => $this->input->post('theme'),
+			'layout' => $this->input->post('layout'),
+			'css'    => html_entity_decode($this->input->post('css', FALSE)),
+			'js'     => html_entity_decode($this->input->post('js', FALSE)),
+			'data'   => serialize($data)
 		);
 
 		if ($overload_id)
