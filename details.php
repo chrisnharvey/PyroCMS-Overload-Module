@@ -52,6 +52,7 @@ class Module_Overload extends Module
 			  `layout` varchar(50) DEFAULT NULL,
 			  `css` longtext,
 			  `js` longtext,
+			  `meta` longtext,
 			  `data` longtext,
 			  PRIMARY KEY (`id`)
 			) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;

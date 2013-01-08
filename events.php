@@ -46,6 +46,12 @@ class Events_Overload
 
 			// Now lets append to the template
 			$this->ci->template->set(unserialize($overload->data));
+
+			if ($overload->meta)
+			{
+				foreach (unserialize($overload->meta) as $name => $content)
+					$this->ci->template->append_metadata('<meta name="'.$name.'" content="'.$content.'" />');
+			}
 			
 			if ($overload->js)
 				$this->ci->template->append_metadata('<script type="text/javascript">' . $overload->js . '</script>');

@@ -13,6 +13,7 @@
 		<li><a href="#options-tab"><span>Options</span></a></li>
 		<li><a href="#css-tab"><span>CSS</span></a></li>
 		<li><a href="#js-tab"><span>Javascript</span></a></li>
+		<li><a href="#meta-tab"><span>Metadata</span></a></li>
 		<li><a href="#data-tab"><span>Data</span></a></li>
 	</ul>
 	
@@ -99,6 +100,41 @@
 					<textarea name="js" height="500" id="css" class="js_editor" width="100%"><?php echo isset($js) ? $js : NULL; ?></textarea>				
 				</li>
 			</ul>
+		</fieldset>
+	</div>
+
+	<!-- Metadata tab -->
+	<div class="form_inputs" id="meta-tab">
+		<fieldset>
+			<ul>
+				<?php if (isset($meta) AND ! empty($meta)): ?>
+					<?php foreach ($meta as $key => $value): ?>
+						<li>
+							<label style="width: 65px !important;">Key-Value <span>*</span></label>
+							<div class="input key">
+								<input type="text" name="meta_key[]" value="<?php echo set_value('meta_key[]', $key); ?>">
+							</div>
+							<div class="input value">
+								<textarea name="meta_value[]"><?php echo set_value('meta_value[]', $value); ?></textarea>
+							</div>
+						</li>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<li>
+						<label style="width: 65px !important;">Key-Value <span>*</span></label>
+						<div class="input key">
+							<input type="text" name="meta_key[]" value="<?php echo set_value('meta_key[]'); ?>">
+						</div>
+						<div class="input value">
+							<textarea name="meta_value[]"><?php echo set_value('meta_value[]'); ?></textarea>
+						</div>
+					</li>
+				<?php endif; ?>
+			</ul>
+
+			<button type="button" class="btn blue kv_button">
+				<span>Add</span>
+			</button>
 		</fieldset>
 	</div>
 

@@ -24,6 +24,7 @@ class Overload_m extends MY_Model
 		{
 			$data = $query->row_array();
 
+			$data['meta'] = unserialize($data['meta']);
 			$data['data'] = unserialize($data['data']);
 
 			return $data;
@@ -36,12 +37,17 @@ class Overload_m extends MY_Model
 	{
 		$data = array();
 
-		$data_values = $this->input->post('data_value');
-
-		foreach ($this->input->post('data_key') as $id => $key)
+		foreach (array('meta', 'data') as $process)
 		{
-			if ( ! empty($key))
-				$data[$key] = $data_values[$id];
+			$$process = array();
+
+			$values[$process] = $this->input->post("{$process}_value");
+
+			foreach ($this->input->post("{$process}_key") as $id => $key)
+			{
+				if ( ! empty($key))
+					${$process}[$key] = $values[$process][$id];
+			}
 		}
 
 		$insert_data = array(
@@ -59,6 +65,7 @@ class Overload_m extends MY_Model
 			'layout' => $this->input->post('layout'),
 			'css'    => html_entity_decode($this->input->post('css', FALSE)),
 			'js'     => html_entity_decode($this->input->post('js', FALSE)),
+			'meta'   => serialize($meta),
 			'data'   => serialize($data)
 		);
 
